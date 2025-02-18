@@ -1,0 +1,254 @@
+html, body {
+    height: 100%; /* Assure que le body et html occupent toute la hauteur de la page */
+    margin: 0;    /* Enlève les marges par défaut */
+}
+
+/* Application générale de la police */
+body {
+    margin: 0;
+    font-family: 'Russo One', sans-serif; /* Application de la police Russo One */
+}
+
+body {
+    background-image: url('images/background.jpg'); /* Assure-toi que le fichier est bien nommé */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* Header */
+/* Header */
+header {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    display: flex;
+    justify-content: space-between; /* Logo on the left, nav in the center */
+    align-items: center;
+    position: relative;
+}
+
+/* Logo */
+.logo img {
+    height: 80px;
+}
+
+/* Nav */
+nav {
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 30px;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #9370DB;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #9370DB;
+    transform: scale(1.1);
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    position: absolute;
+    right: 20px;  /* Placed 20px from the right edge */
+    top: 50%;
+    transform: translateY(-50%);  /* Center vertically in the header */
+    gap: 15px;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+
+
+/* Section principale */
+main {
+    background-image: url('images/background.jpg');
+    background-size: cover;      /* Couvre toute la zone disponible */
+    background-position: center; /* Centrer l'image de fond */
+    background-attachment: fixed; /* Rendre l'image fixe pendant le défilement */
+    min-height: 100%;             /* Assure que main couvre tout l'espace */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+
+
+/* Titre principal */
+.title {
+    font-size: 28px; /* Réduction de la taille du titre */
+    color: white;
+    margin-top: -200px; /* Réduction de l'espace entre le titre et le haut */
+    margin-bottom: 8px;
+}
+
+/* Sous-titre */
+.subtitle {
+    font-size: 16px; /* Réduction de la taille du sous-titre */
+    color: white;
+    margin-bottom: 15px;
+    max-width: 500px;
+    line-height: 1.4; /* Espacement réduit entre les lignes */
+}
+
+
+
+/* Bouton de demande de tokens */
+.btn-drip {
+    background-color: #8A2BE2;
+    color: white;
+    padding: 12px 25px; /* Réduction du padding du bouton */
+    font-size: 16px; /* Réduction de la taille du texte */
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-drip:hover {
+    background-color: #7A1BCE;
+    transform: scale(1.03); /* Légère réduction de l'effet au survol */
+}
+
+/* Footer */
+footer {
+    background-color: rgba(75, 0, 130, 0.5); /* Transparence */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Liens du footer */
+footer a {
+    color: #9370DB;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Section Claim et Donate */
+.claim-section,
+.donate-section {
+    margin: 10px 0; /* Réduction de la marge des sections */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px; /* Réduction de la taille des boutons */
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 8px; /* Réduction de la marge supérieure */
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Réponses de la section de don */
+.donate-section {
+    background-color: #F1F1F1;
+    padding: 15px; /* Réduction du padding */
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Section de la page contact */
+.contact-form {
+    margin-top: 20px; /* Réduction de la marge */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Réduction de la largeur maximale */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0; /* Réduction de la marge */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px; /* Réduction de la taille des champs */
+}
+
+.contact-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px; /* Réduction du padding */
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+.contact-form button:hover {
+    background-color: #45a049;
+}
+
+
+

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About - MonadFlow</title>
+
+    <!-- Importing Russo One font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+			background-image: url('images/background.jpg');
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
+		    margin: 0;
+		    font-family: 'Russo One', sans-serif; /* Applying Russo One font */
+        }
+
+        /* Header */
+        header {
+		            background-color: rgba(0, 0, 0, 0.3);
+		            padding: 40px;
+		            display: flex;
+		            justify-content: center;
+		            align-items: center;
+		            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            left: 20px;
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        nav {
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 30px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #9370DB;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #9370DB;
+            transform: scale(1.1);
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1; /* Take up remaining space */
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        main h1 {
+            font-size: 40px;
+            color: white;
+            margin-top: 50px;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraphe */
+		/* Paragraphe */
+		main p {
+		    font-size: 18px;
+		    color: white;
+		    max-width: 1000px; /* Largeur maximale du paragraphe */
+		    margin: 0 auto;
+		    line-height: 1.6;
+		    overflow: hidden; /* Pour que les éléments flottants se comportent correctement */
+		}
+
+		/* Flex container */
+		.flex-container {
+		    display: flex;
+		    justify-content: space-between;
+		    gap: 10px; /* Espacement entre les éléments */
+		    margin-bottom: 70px; /* Espacement entre les blocs de texte */
+		    margin-top: 70px;
+		    flex-wrap: wrap;
+		}
+
+		.text-block {
+		    width: 45%;
+		    padding: 20px;
+		    background: rgba(20, 20, 20, 0.8); /* Fond sombre transparent */
+		    border-radius: 15px;
+		    color: white;
+		    font-size: 18px;
+		    line-height: 1.6;
+		    position: relative;
+		    box-shadow: 0 0 10px rgba(147, 112, 219, 0.5); /* Glow violet */
+		    transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.text-block:hover {
+		    transform: scale(1.05);
+    		box-shadow: 0 0 20px rgba(147, 112, 219, 0.8);
+		}
+
+		@media (max-width: 768px) {
+		    .flex-container {
+		        flex-direction: column;
+		        align-items: center;
+		    }
+		    .text-block {
+		        width: 90%;
+		        text-align: center;
+		    }
+}
+
+		/* Partie à gauche */
+		.left {
+		    width: 45%; /* Largeur des sections gauche */
+		    text-align: left;
+		    font-size: 18px; /* Taille du texte */
+		    color: white; /* Couleur du texte */
+		    line-height: 1.6; /* Espacement entre les lignes */
+		}
+
+		/* Partie à droite */
+		.right {
+		    width: 45%; /* Largeur des sections droite */
+		    text-align: right;
+		    font-size: 18px; /* Taille du texte */
+		    color: white; /* Couleur du texte */
+		    line-height: 1.6; /* Espacement entre les lignes */
+		}
+
+
+
+        /* Footer */
+        footer {
+				    background-color: rgba(0, 0, 0, 0.3); /* Même couleur et opacité que le header */
+				    color: white;
+				    text-align: center;
+				    padding: 5px;
+				    font-family: 'Russo One', sans-serif;
+				    font-size: 20px;
+				    position: relative;
+		    		z-index: 10;
+		}
+
+        footer a {
+            color: #9370DB;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content for About -->
+    <main>
+	    <h1>About MonadFlow</h1>
+	    <div class="flex-container">
+	        <div class="text-block">MonadFlow is a community-driven faucet designed to distribute Monad testnet tokens to developers, testers, and blockchain enthusiasts who want to experiment with the Monad ecosystem before its official launch. Our goal is to provide easy access to testnet tokens, allowing users to interact with smart contracts, test transactions, and explore the network’s features without worrying about resource scarcity.</div>
+	        <div class="text-block">Unlike traditional faucets, MonadFlow integrates a leaderboard to encourage community engagement. By regularly claiming tokens and performing specific actions on the network, users can climb the rankings and stand out. This system not only adds a fun and competitive aspect but also incentivizes active participation in the testnet.</div>
+	    </div>
+	    <div class="flex-container">
+	        <div class="text-block">We have also implemented a collaborative funding model to ensure the faucet’s sustainability. Through community donations and partnerships with other Monad projects, we aim to maintain a stable and fair distribution of tokens. Additionally, we are exploring redistribution mechanisms that allow the most active users to contribute to the faucet’s supply, ensuring continuous access to essential resources for developing on Monad.</div>
+	        <div class="text-block">As a community platform, we remain attentive to network developments and user needs. If Monad decides to reward the most involved builders, we hope our faucet will play a key role in helping them gain experience and actively contribute to the ecosystem. <br> <br> Join us on MonadFlow and take part in shaping the future of Monad! 💜</div>
+	    </div>
+	</main>
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>Created by MonadFlow</p>
+        <p>Follow us on 
+        <a href="https://x.com/monadflow_xyz" target="_blank">Twitter</a> | 
+        <a href="https://discord.gg/xx6atH85yV" target="_blank">Discord</a>
+    </p>
+    </footer>
+
+</body>
+</html>
