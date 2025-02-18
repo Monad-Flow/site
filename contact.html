@@ -92,18 +92,18 @@
             font-weight: bold;
             margin-bottom: 6px;
             color: white;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
             max-width: 500px;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
             border: 2px solid transparent;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 16px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
         }
@@ -111,8 +111,8 @@
         .contact-form button {
             background: linear-gradient(45deg, #8A2BE2, #9370DB);
             color: white;
-            padding: 12px 25px;
-            font-size: 16px;
+            padding: 14px 30px;
+            font-size: 18px;
             font-weight: 700;
             text-transform: uppercase;
             border: none;
@@ -123,22 +123,47 @@
 
         @media (max-width: 600px) {
             .contact-form label {
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .contact-form input,
             .contact-form textarea {
                 font-size: 14px;
-                padding: 8px;
+                padding: 10px;
             }
 
             .contact-form button {
-                font-size: 14px;
-                padding: 10px 20px;
+                font-size: 16px;
+                padding: 12px 25px;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="MonadFlow Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contact-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </div>
 </body>
 </html>
