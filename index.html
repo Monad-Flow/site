@@ -236,48 +236,52 @@
 
     <!-- Script to interact with the contract -->
     <script>
-        // Adresse du contrat et ABI
-        const contractAddress = "0xc6A591F6a7e66d85B66f07C849eB975f682E6114"; // Remplace avec l'adresse de ton contrat
+        const contractAddress = "0xYourSmartContractAddressHere"; // Remplace par l'adresse de ton contrat
         const contractABI = [
-            "function requestFunds() external",
-            "function timeUntilNextRequest(address _user) external view returns (uint256)"
+            {
+                "inputs": [],
+                "name": "requestFunds",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }
         ];
 
         let provider;
         let signer;
         let contract;
 
-        // Attendre que la page soit complètement chargée
-        window.onload = async () => {
+        async function connectWallet() {
             if (window.ethereum) {
-                provider = new ethers.providers.Web3Provider(window.ethereum);
-                signer = provider.getSigner();
-                contract = new ethers.Contract(contractAddress, contractABI, signer);
-                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                try {
+                    provider = new ethers.providers.Web3Provider(window.ethereum);
+                    await provider.send("eth_requestAccounts", []);
+                    signer = provider.getSigner();
+                    const address = await signer.getAddress();
+                    document.getElementById("wallet-address").innerText = `Connected: ${address}`;
+                    contract = new ethers.Contract(contractAddress, contractABI, signer);
+                } catch (error) {
+                    console.error("Connection failed", error);
+                }
             } else {
-                alert("Please install MetaMask to use this faucet.");
+                alert("Haha Wallet not detected. Please install it.");
             }
-        };
+        }
 
-        // Fonction pour appeler requestFunds()
-        document.getElementById("claimButton").onclick = async () => {
-            const walletAddress = document.getElementById("wallet-address").value;
-
-            if (!walletAddress) {
-                alert("Please enter a valid wallet address.");
+        async function requestTokens() {
+            if (!contract) {
+                alert("Please connect your wallet first.");
                 return;
             }
-
             try {
-                const tx = await contract.connect(signer).requestFunds();
-                console.log("Transaction loading...", tx);
-                await tx.wait(); // Attendre la confirmation de la transaction
-                alert("Faucet claim successful!");
+                const tx = await contract.requestFunds();
+                await tx.wait();
+                alert("Tokens requested successfully!");
             } catch (error) {
-                console.error("Error while asking funds:", error);
-                alert("Error, you can't claim now.");
+                console.error("Transaction failed", error);
+                alert("Transaction failed. Check console for details.");
             }
-        };
+        }
     </script>
 
 </body>
