@@ -164,7 +164,7 @@ main {
     border-radius: 6px;
     border: 2px solid transparent;
     background: rgba(255, 255, 255, 0.1);
-    color: white !important;
+    color: white;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -172,6 +172,12 @@ main {
     border-color: #9370DB;
     box-shadow: 0 0 10px rgba(147, 112, 219, 0.8);
     outline: none;
+}
+
+	    .wallet-container input[type="text"],
+.wallet-container input[type="email"],
+.wallet-container input[type="password"] {
+    color: white !important; /* Ajoute cette règle pour être plus spécifique */
 }
 
 /* Footer */
