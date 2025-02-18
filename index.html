@@ -235,7 +235,7 @@
     </footer>
 
     <!-- Script to interact with the contract -->
-    <script>
+     <script>
         const contractAddress = "0xc6A591F6a7e66d85B66f07C849eB975f682E6114"; // Remplace par l'adresse de ton contrat
         const contractABI = [
             {
@@ -252,19 +252,23 @@
         let contract;
 
         async function connectWallet() {
-            if (window.ethereum) {
-                try {
-                    provider = new ethers.providers.Web3Provider(window.ethereum);
-                    await provider.send("eth_requestAccounts", []);
-                    signer = provider.getSigner();
-                    const address = await signer.getAddress();
-                    document.getElementById("wallet-address").innerText = `Connected: ${address}`;
-                    contract = new ethers.Contract(contractAddress, contractABI, signer);
-                } catch (error) {
-                    console.error("Connection failed", error);
-                }
+            if (window.hahawallet) {
+                provider = new ethers.providers.Web3Provider(window.hahawallet);
+            } else if (window.ethereum) {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
             } else {
-                alert("HaHa Wallet not detected. Please install it.");
+                alert("No compatible wallet detected. Please install Metamask or HaHa Wallet.");
+                return;
+            }
+            
+            try {
+                await provider.send("eth_requestAccounts", []);
+                signer = provider.getSigner();
+                const address = await signer.getAddress();
+                document.getElementById("wallet-address").innerText = `Connected: ${address}`;
+                contract = new ethers.Contract(contractAddress, contractABI, signer);
+            } catch (error) {
+                console.error("Connection failed", error);
             }
         }
 
