@@ -191,8 +191,18 @@
 		@media (max-width: 768px) {
 		    .contact-form {
 		        width: 90%;
-		        padding: 15px;
+		        padding: 20px;
 		    }
+			.contact-form input,
+    .contact-form textarea {
+        width: 100%; /* Les champs du formulaire s'étendront sur toute la largeur */
+        font-size: 14px; /* Réduit légèrement la taille de la police pour l'adaptation mobile */
+    }
+
+    .contact-form button {
+        width: 100%; /* Le bouton s'étend sur toute la largeur */
+        padding: 12px 0; /* Modifie la taille du padding pour l'adapter à la largeur */
+    }
 }
 
         /* Footer */
