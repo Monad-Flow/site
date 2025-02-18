@@ -124,25 +124,26 @@ main {
     line-height: 1.6;
 }
 
-.btn-drip {
-    background-color: #8A2BE2;
+.btp_drip {
+    background: linear-gradient(45deg, #8A2BE2, #9370DB);
     color: white;
     padding: 15px 30px;
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 20px;
-    max-width: 80%;
-    text-align: center;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(147, 112, 219, 0.6);
 }
 
-.btn-drip:hover {
-    background-color: #7A1BCE;
+.btn_drip:hover {
+    background: linear-gradient(45deg, #9370DB, #8A2BE2);
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(147, 112, 219, 1);
 }
 
 /* Wallet Container */
