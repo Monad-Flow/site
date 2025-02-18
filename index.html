@@ -4,210 +4,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/favicon.png">
-	
+
+	<script src="https://cdn.jsdelivr.net/npm/ethers@5.6.9/dist/ethers.umd.min.js"></script>
+
     <title>MonadFlow</title>
 
     <!-- Importing Russo One font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 
     <style>
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Russo One', sans-serif;
-}
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Russo One', sans-serif;
+        }
 
-body {
-    background-image: url('images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        body {
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-/* Header */
-header {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-.logo {
-    position: absolute;
-    left: 20px;
-}
+        .logo {
+            position: absolute;
+            left: 20px;
+        }
 
-.logo img {
-    height: 80px;
-}
+        .logo img {
+            height: 80px;
+        }
 
-nav {
-    text-align: center;
-}
+        nav {
+            text-align: center;
+        }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-nav ul li {
-    margin: 0 30px;
-    position: relative;
-}
+        nav ul li {
+            margin: 0 30px;
+            position: relative;
+        }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    position: relative;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
 
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #9370DB;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-}
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #9370DB;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
 
-nav ul li a:hover {
-    color: #9370DB;
-    transform: scale(1.1);
-}
+        nav ul li a:hover {
+            color: #9370DB;
+            transform: scale(1.1);
+        }
 
-nav ul li a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
 
-/* Main Section */
-main {
-    padding: 50px 5%;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-}
+        /* Main Section */
+        main {
+            padding: 50px 5%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
 
-.title {
-    font-size: 40px;
-    color: white;
-    margin-bottom: 10px;
-}
+        .title {
+            font-size: 40px;
+            color: white;
+            margin-bottom: 10px;
+        }
 
-.subtitle {
-    font-size: 18px;
-    color: white;
-    margin-bottom: 20px;
-    max-width: 600px;
-    line-height: 1.6;
-}
+        .subtitle {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 20px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
 
-.btn-drip {
-    background: linear-gradient(45deg, #8A2BE2, #9370DB);
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 20px;
-    max-width: 80%;
-    text-align: center;
-}
+        .btn-drip {
+            background: linear-gradient(45deg, #8A2BE2, #9370DB);
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            max-width: 80%;
+            text-align: center;
+        }
 
-.btn-drip:hover {
-    background: linear-gradient(45deg, #9370DB, #8A2BE2);
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(147, 112, 219, 1);
-}
+        .btn-drip:hover {
+            background: linear-gradient(45deg, #9370DB, #8A2BE2);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(147, 112, 219, 1);
+        }
 
+        /* Wallet Container */
+        .wallet-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex; /* Ajouté pour activer Flexbox */
+            justify-content: center; /* Centrer horizontalement */
+            align-items: center; /* Centrer verticalement */
+        }
 
-/* Wallet Container */
-.wallet-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    display: flex; /* Ajouté pour activer Flexbox */
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-}
+        .wallet-container input {
+            width: 100%; /* Ajuste la largeur de l'input pour qu'il soit plus petit et puisse être centré */
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.wallet-container input {
-    width: 100%; /* Ajuste la largeur de l'input pour qu'il soit plus petit et puisse être centré */
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 2px solid transparent;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+        .wallet-container input:focus {
+            border-color: #9370DB;
+            box-shadow: 0 0 10px rgba(147, 112, 219, 0.8);
+            outline: none;
+        }
 
-.wallet-container input:focus {
-    border-color: #9370DB;
-    box-shadow: 0 0 10px rgba(147, 112, 219, 0.8);
-    outline: none;
-}
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 20px;
+            position: relative;
+            z-index: 10;
+            margin-top: auto;
+        }
 
-/* Footer */
-footer {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    text-align: center;
-    padding: 5px;
-    font-size: 20px;
-    position: relative;
-    z-index: 10;
-    margin-top: auto;
-}
+        footer p {
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
 
-footer p {
-    margin-bottom: 15px;
-    margin-top: 20px;
-}
+        footer a {
+            color: #9370DB;
+            text-decoration: none;
+        }
 
-footer a {
-    color: #9370DB;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
     <!-- Header -->
     <header>
-
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -221,10 +219,10 @@ footer a:hover {
     <main>
         <h1 class="title">A simple faucet on Monad Testnet</h1>
         <p class="subtitle">Get started with our faucet to receive tokens on the Monad Testnet. These tokens allow you to interact with the Monad Testnet ecosystem.</p>
-        	<div class="wallet-container">
-			        <input type="text" id="wallet-address" placeholder="Paste your wallet address here">
-    </div>
-        <button class="btn-drip">Drip Tokens</button>
+        <div class="wallet-container">
+            <input type="text" id="wallet-address" placeholder="Paste your wallet address here">
+        </div>
+        <button class="btn-drip" id="claimButton">Drip Tokens</button>
     </main>
 
     <!-- Footer -->
@@ -233,10 +231,54 @@ footer a:hover {
         <p>Follow us on 
         <a href="https://x.com/monadflow_xyz" target="_blank">Twitter</a> | 
         <a href="https://discord.gg/xx6atH85yV" target="_blank">Discord</a>
-    </p>
+        </p>
     </footer>
 
+    <!-- Script to interact with the contract -->
+    <script>
+        // Adresse du contrat et ABI
+        const contractAddress = "0xc6A591F6a7e66d85B66f07C849eB975f682E6114"; // Remplace avec l'adresse de ton contrat
+        const contractABI = [
+            "function requestFunds() external",
+            "function timeUntilNextRequest(address _user) external view returns (uint256)"
+        ];
 
+        let provider;
+        let signer;
+        let contract;
+
+        // Attendre que la page soit complètement chargée
+        window.onload = async () => {
+            if (window.ethereum) {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+                contract = new ethers.Contract(contractAddress, contractABI, signer);
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+            } else {
+                alert("Please install MetaMask to use this faucet.");
+            }
+        };
+
+        // Fonction pour appeler requestFunds()
+        document.getElementById("claimButton").onclick = async () => {
+            const walletAddress = document.getElementById("wallet-address").value;
+
+            if (!walletAddress) {
+                alert("Please enter a valid wallet address.");
+                return;
+            }
+
+            try {
+                const tx = await contract.connect(signer).requestFunds();
+                console.log("Transaction loading...", tx);
+                await tx.wait(); // Attendre la confirmation de la transaction
+                alert("Faucet claim successful!");
+            } catch (error) {
+                console.error("Error while asking funds:", error);
+                alert("Error, you can't claim now.");
+            }
+        };
+    </script>
 
 </body>
 </html>
