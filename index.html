@@ -259,7 +259,7 @@
     document.getElementById('addNetworkButton').addEventListener('click', () => {
         if (window.ethereum) {
             const monadNetwork = {
-                chainId: '10143' + (1234).toString(16),
+                chainId: '0x' + (10143).toString(16),
                 chainName: 'Monad Testnet',
                 rpcUrls: ['https://testnet-rpc.monad.xyz/'],
                 nativeCurrency: {
