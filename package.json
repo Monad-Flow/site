@@ -2,5 +2,7 @@
   "name": "monadflow",
   "version": "1.0.0",
   "main": "index.js",
-  "dependencies": {"faunadb": "^2.14.0"}
+  "dependencies": {
+    "faunadb": "^2.14.2"
+  }
 }
