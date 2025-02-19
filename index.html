@@ -123,28 +123,6 @@
             line-height: 1.6;
         }
 
-        .btn-drip {
-            background: linear-gradient(45deg, #8A2BE2, #9370DB);
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            max-width: 80%;
-            text-align: center;
-        }
-
-        .btn-drip:hover {
-            background: linear-gradient(45deg, #9370DB, #8A2BE2);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(147, 112, 219, 1);
-        }
-
         .wallet-container {
             width: 100%;
             max-width: 600px;
@@ -174,8 +152,27 @@
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 20px;  /* Espace entre les boutons */
             margin-top: 20px;
+        }
+
+        .btn-drip {
+            background: linear-gradient(45deg, #8A2BE2, #9370DB);
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-drip:hover {
+            background: linear-gradient(45deg, #9370DB, #8A2BE2);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(147, 112, 219, 1);
         }
 
         .btn-add-network {
@@ -241,8 +238,10 @@
         <div class="wallet-container">
             <input type="text" id="wallet-address" placeholder="Paste your wallet address here">
         </div>
-        <button class="btn-drip" id="claimButton">Drip Tokens</button>
-	<button class="btn-add-network" id="addNetworkButton">Add Network</button>
+        <div class="btn-container">
+            <button class="btn-drip" id="claimButton">Drip Tokens</button>
+            <button class="btn-add-network" id="addNetworkButton">Add Network</button>
+        </div>
     </main>
 
     <footer>
