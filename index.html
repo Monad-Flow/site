@@ -171,6 +171,32 @@
             outline: none;
         }
 
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .btn-add-network {
+            background: linear-gradient(45deg, #8A2BE2, #9370DB);
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-network:hover {
+            background: linear-gradient(45deg, #9370DB, #8A2BE2);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(147, 112, 219, 1);
+        }
+
         footer {
             background-color: rgba(0, 0, 0, 0.3);
             color: white;
@@ -216,6 +242,7 @@
             <input type="text" id="wallet-address" placeholder="Paste your wallet address here">
         </div>
         <button class="btn-drip" id="claimButton">Drip Tokens</button>
+	<button class="btn-add-network" id="addNetworkButton">Add Network</button>
     </main>
 
     <footer>
@@ -228,6 +255,41 @@
         <a href="https://discord.gg/monad" target="_blank">Discord</a>
     </p>
 </footer>
+
+	<script>
+    document.getElementById('addNetworkButton').addEventListener('click', () => {
+        if (window.ethereum) {
+            const monadNetwork = {
+                chainId: '10143' + (1234).toString(16),
+                chainName: 'Monad Testnet',
+                rpcUrls: ['https://testnet-rpc.monad.xyz/'],
+                nativeCurrency: {
+                    name: 'MONAD',
+                    symbol: 'MON',
+                    decimals: 18
+                },
+                blockExplorerUrls: ['https://monad-testnet.socialscan.io//'],
+            };
+
+            try {
+                ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params: [monadNetwork],
+                }).then(() => {
+                    alert('Monad Testnet added to your wallet !');
+                }).catch((error) => {
+                    console.error(error);
+                    alert('Error adding network. Make sure Metamask is installed.');
+                });
+            } catch (error) {
+                console.error(error);
+                alert('An error has occurred.');
+            }
+        } else {
+            alert('Metamask or a compatible wallet is required.');
+        }
+    });
+</script>
 
 </body>
 </html>
