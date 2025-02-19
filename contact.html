@@ -6,7 +6,6 @@
 	<link rel="icon" type="image/png" href="images/favicon.png">
     <title>Contact - MonadFlow</title>
 
-    <!-- Importing Russo One font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 
     <style>
@@ -20,10 +19,9 @@
 	 		background-position: center;
 	 		background-attachment: fixed;
 	        margin: 0;
-	        font-family: 'Russo One', sans-serif; /* Applying Russo One font */
+	        font-family: 'Russo One', sans-serif;
         }
 
-        /* Header */
         header {
 		            background-color: rgba(0, 0, 0, 0.3);
 		            padding: 40px;
@@ -92,9 +90,8 @@
             transform-origin: bottom left;
         }
 
-        /* Main Content */
         main {
-            flex: 1; /* Take up remaining space */
+            flex: 1;
             text-align: center;
             padding: 50px 20px;
         }
@@ -114,25 +111,24 @@
             line-height: 1.6;
         }
 
-        /* Contact Form */
        .contact-form {
 	       width: 90%;
 	       background: rgba(20, 20, 20, 0.8);
 	       padding: 25px;
 	       border-radius: 12px;
 	       box-shadow: 0 0 15px rgba(147, 112, 219, 0.5);
-	       max-width: 800px; /* Largeur maximale du formulaire */
+	       max-width: 800px;
 	       margin: 30px auto 70px;
 	       box-sizing: border-box;
 	       display: flex;
 	       flex-direction: column;
-	       align-items: center; /* Centrer horizontalement */
-	       font-family: 'Russo One', sans-serif; /* Applique la police Russo One */
+	       align-items: center;
+	       font-family: 'Russo One', sans-serif;
 	   }
 
 	   .contact-form label {
 	       display: block;
-	       width: 100%; /* Largeur des labels sur toute la largeur disponible */
+	       width: 100%;
 	       text-align: left;
 	       font-weight: bold;
 	       margin-bottom: 8px;
@@ -147,8 +143,8 @@
 		    border: 2px solid transparent;
 		    border-radius: 6px;
 		    font-size: 16px;
-		    background: rgba(255, 255, 255, 0.1); /* Couleur de fond */
-		    color: white; /* Couleur du texte dans les champs */
+		    background: rgba(255, 255, 255, 0.1);
+		    color: white;
 		    transition: all 0.3s ease;
 		    box-sizing: border-box;
 		}
@@ -162,7 +158,7 @@
 	   }
 
 	   .contact-form textarea {
-	       resize: vertical; /* Permet de redimensionner la zone de texte verticalement */
+	       resize: vertical;
 	   }
 
 	   .contact-form button {
@@ -201,19 +197,18 @@
 		    }
 			.contact-form input,
     .contact-form textarea {
-        width: 100%; /* Les champs du formulaire s'étendront sur toute la largeur */
-        font-size: 14px; /* Réduit légèrement la taille de la police pour l'adaptation mobile */
+        width: 100%;
+        font-size: 14px;
     }
 
     .contact-form button {
-        width: 100%; /* Le bouton s'étend sur toute la largeur */
-        padding: 12px 0; /* Modifie la taille du padding pour l'adapter à la largeur */
+        width: 100%;
+        padding: 12px 0;
     }
 }
 
-        /* Footer */
         footer {
-				    background-color: rgba(0, 0, 0, 0.3); /* Même couleur et opacité que le header */
+				    background-color: rgba(0, 0, 0, 0.3);
 				    color: white;
 				    text-align: center;
 				    padding: 5px;
@@ -235,7 +230,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header>
 
 
@@ -248,14 +242,12 @@
         </nav>
     </header>
 
-    <!-- Main Content for Contact -->
     <main>
         <h1>Contact Us</h1>
         <p>If you have any questions or need support, feel free to reach out! Fill in the form below:</p>
 
-        <!-- Contact Form -->
         <div class="contact-form">
-            <form action="https://formspree.io/f/mvgzbqwd" method="POST"> <!-- Remplace l'URL par la tienne -->
+            <form action="https://formspree.io/f/mvgzbqwd" method="POST">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
 
@@ -270,7 +262,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
     <p>Created by MonadFlow</p>
     <p>Follow us on 
