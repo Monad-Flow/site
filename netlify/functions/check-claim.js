@@ -19,18 +19,15 @@ exports.handler = async (event, context) => {
 
     // Recherche dans FaunaDB si l'IP a déjà fait un claim dans les dernières 12 heures
     const response = await client.query(
-      q.Map(
-        q.Paginate(q.Match(q.Index('claims_by_ip'), ip)),
-        q.Lambda('X', q.Get(q.Var('X')))
-      )
+      q.Get(q.Match(q.Index('claims_by_ip'), ip))
     );
 
-    const currentTime = new Date().getTime();
-    const twelveHoursInMilliseconds = 12 * 60 * 60 * 1000;
+    // Si l'IP n'a pas encore réclamé, créer un claim pour cet utilisateur
+    if (response) {
+      const lastClaimTime = response.data.timestamp; // L'heure du dernier claim
+      const currentTime = new Date().getTime();
+      const twelveHoursInMilliseconds = 12 * 60 * 60 * 1000;
 
-    // Si l'IP est déjà dans la base, vérifier si elle a réclamé dans les dernières 12 heures
-    if (response.data.length > 0) {
-      const lastClaimTime = response.data[0].data.timestamp; // L'heure du dernier claim
       if (currentTime - lastClaimTime < twelveHoursInMilliseconds) {
         return {
           statusCode: 200,
@@ -44,7 +41,7 @@ exports.handler = async (event, context) => {
       q.Create(q.Collection('claims'), {
         data: {
           ip: ip,
-          timestamp: currentTime,
+          timestamp: new Date().getTime(),
         },
       })
     );
