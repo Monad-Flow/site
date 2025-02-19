@@ -9,11 +9,10 @@
 
     <title>MonadFlow</title>
 
-    <!-- Importing Russo One font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset CSS */
+
         * {
             margin: 0;
             padding: 0;
@@ -32,7 +31,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         header {
             background-color: rgba(0, 0, 0, 0.3);
             padding: 40px;
@@ -101,7 +99,6 @@
             transform-origin: bottom left;
         }
 
-        /* Main Section */
         main {
             padding: 50px 5%;
             flex: 1;
@@ -148,18 +145,17 @@
             box-shadow: 0 0 20px rgba(147, 112, 219, 1);
         }
 
-        /* Wallet Container */
         .wallet-container {
             width: 100%;
             max-width: 600px;
             margin: 20px auto;
-            display: flex; /* Ajouté pour activer Flexbox */
-            justify-content: center; /* Centrer horizontalement */
-            align-items: center; /* Centrer verticalement */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .wallet-container input {
-            width: 100%; /* Ajuste la largeur de l'input pour qu'il soit plus petit et puisse être centré */
+            width: 100%;
             padding: 12px;
             font-size: 16px;
             border-radius: 6px;
@@ -175,7 +171,6 @@
             outline: none;
         }
 
-        /* Footer */
         footer {
             background-color: rgba(0, 0, 0, 0.3);
             color: white;
@@ -204,7 +199,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <nav>
             <ul>
@@ -215,7 +209,6 @@
         </nav>
     </header>
 
-    <!-- Main Content Section -->
     <main>
         <h1 class="title">A simple faucet on Monad Testnet</h1>
         <p class="subtitle">Get started with our faucet to receive tokens on the Monad Testnet. These tokens allow you to interact with the Monad Testnet ecosystem.</p>
@@ -225,7 +218,6 @@
         <button class="btn-drip" id="claimButton">Drip Tokens</button>
     </main>
 
-    <!-- Footer -->
     <footer>
     <p>Created by MonadFlow</p>
     <p>Follow us on 
@@ -236,60 +228,6 @@
         <a href="https://discord.gg/monad" target="_blank">Discord</a>
     </p>
 </footer>
-
-    <!-- Script to interact with the contract -->
-     <script>
-        const contractAddress = "0xc6A591F6a7e66d85B66f07C849eB975f682E6114"; // Remplace par l'adresse de ton contrat
-        const contractABI = [
-            {
-                "inputs": [],
-                "name": "requestFunds",
-                "outputs": [],
-                "stateMutability": "nonpayable",
-                "type": "function"
-            }
-        ];
-
-        let provider;
-        let signer;
-        let contract;
-
-        async function connectWallet() {
-            if (window.hahawallet) {
-                provider = new ethers.providers.Web3Provider(window.hahawallet);
-            } else if (window.ethereum) {
-                provider = new ethers.providers.Web3Provider(window.ethereum);
-            } else {
-                alert("No compatible wallet detected. Please install Metamask or HaHa Wallet.");
-                return;
-            }
-            
-            try {
-                await provider.send("eth_requestAccounts", []);
-                signer = provider.getSigner();
-                const address = await signer.getAddress();
-                document.getElementById("wallet-address").innerText = `Connected: ${address}`;
-                contract = new ethers.Contract(contractAddress, contractABI, signer);
-            } catch (error) {
-                console.error("Connection failed", error);
-            }
-        }
-
-        async function requestTokens() {
-            if (!contract) {
-                alert("Please connect your wallet first.");
-                return;
-            }
-            try {
-                const tx = await contract.requestFunds();
-                await tx.wait();
-                alert("Tokens requested successfully!");
-            } catch (error) {
-                console.error("Transaction failed", error);
-                alert("Transaction failed. Check console for details.");
-            }
-        }
-    </script>
 
 </body>
 </html>
