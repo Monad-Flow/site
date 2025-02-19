@@ -152,7 +152,7 @@
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 20px;  /* Espace entre les boutons */
+            gap: 20px;
             margin-top: 20px;
         }
 
@@ -257,37 +257,42 @@
 
 	<script>
     document.getElementById('addNetworkButton').addEventListener('click', () => {
-        if (window.ethereum) {
-            const monadNetwork = {
-                chainId: '0x' + (10143).toString(16),
-                chainName: 'Monad Testnet',
-                rpcUrls: ['https://testnet-rpc.monad.xyz/'],
-                nativeCurrency: {
-                    name: 'MONAD',
-                    symbol: 'MON',
-                    decimals: 18
-                },
-                blockExplorerUrls: ['https://monad-testnet.socialscan.io//'],
-            };
+    if (window.ethereum) {
+        const monadNetwork = {
+            chainId: '0x' + (10143).toString(16),
+            chainName: 'Monad Testnet',
+            rpcUrls: ['https://testnet-rpc.monad.xyz/'],
+            nativeCurrency: {
+                name: 'MONAD',
+                symbol: 'MON',
+                decimals: 18
+            },
+            blockExplorerUrls: ['https://monad-testnet.socialscan.io/'],
+        };
 
-            try {
+        ethereum.request({ method: 'eth_chainId' }).then((currentChainId) => {
+            if (currentChainId === monadNetwork.chainId) {
+                alert('Monad Testnet already added to your wallet!');
+            } else {
                 ethereum.request({
                     method: 'wallet_addEthereumChain',
                     params: [monadNetwork],
                 }).then(() => {
-                    alert('Monad Testnet added to your wallet !');
+                    alert('Monad Testnet added to your wallet!');
                 }).catch((error) => {
-                    console.error(error);
-                    alert('Error adding network. Make sure Metamask is installed.');
+                    console.error('Error adding network:', error);
+                    alert('Failed to add network. Ensure that MetaMask is properly installed and connected.');
                 });
-            } catch (error) {
-                console.error(error);
-                alert('An error has occurred.');
             }
-        } else {
-            alert('Metamask or a compatible wallet is required.');
-        }
-    });
+        }).catch((error) => {
+            console.error('Error checking current chain:', error);
+            alert('Failed to check current chain. Ensure that MetaMask is properly installed.');
+        });
+    } else {
+        alert('MetaMask is not installed. Please install MetaMask and try again.');
+    }
+});
+
 </script>
 
 </body>
