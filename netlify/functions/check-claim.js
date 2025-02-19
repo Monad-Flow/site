@@ -2,7 +2,7 @@ const faunadb = require('faunadb'); // Si tu utilises FaunaDB
 
 // Remplace par tes informations de connexion à FaunaDB
 const client = new faunadb.Client({
-  secret: 'fnAF4AkslpAA0IpQfTe_tnh-d3wlDg-f7QaSoXGR',
+  secret: 'dbsecret',
 });
 
 const q = faunadb.query;
