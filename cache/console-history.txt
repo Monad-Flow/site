@@ -1,2 +1,0 @@
-npm install ethers
-ethers.utils.parseUnits('5', 'gwei');
